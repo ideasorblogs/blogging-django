@@ -111,9 +111,8 @@
 					<button onclick="window.location.href='{% url 'profile' request.user %}'" type="button" class="text-white bg-yellow-500 hover:bg-blue-800 focus:ring-4  focus:outline-none focus:bg-yellow-500 font-medium rounded-lg text-sm px-4 py-2  text-center mr-3 md:mr-0 dark:bg-yellow-500 dark:hover:bg-blue-700 ">
 			  {{request.user.first_name.0}}</button>
 					{% else %}
-					  <div class="flex md:order-2">
-					  <button type="button" onclick="window.location.href='{% url 'account_signup' %}'" class="text-white bg-yellow-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:bg-yellow-500 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-yellow-500 dark:hover:bg-blue-700 ">Sign Up</button>
-					  </div>
+					<a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" href="{% url 'account_login' %}">Sign in</a>
+					<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" href="">Sign Up</a>
 					{% endif %}
 				</div>
 				<p class="my-4 text-xs text-center text-gray-400">
