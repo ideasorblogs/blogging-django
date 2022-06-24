@@ -1,0 +1,37 @@
+{% extends "account/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+<script src="https://cdn.tailwindcss.com"></script>
+<div class="max-w-md mx-auto bg-white shadow-xl rounded my-8 ">
+  <div class="text-center text-size-500 text-gray-800 py-6 text-2xl">
+    <br><p tabindex="0" class="focus:outline-none text-2xl font-extrabold leading-6 text-gray-800">Sign in to your account</p><br>
+  </div>
+  <div class="bg-gray-20  pb-16">
+    <div class="w-4/5 mx-auto">
+      <form class="signup bg-white" id="signup_form" method="POST" action="{% url 'account_signup' %}">
+		  <form method="post" enctype="multipart/form-data" class="signin-form">
+        {% csrf_token %}
+		  {{ form.username|as_crispy_field }}
+		  {{ form.email|as_crispy_field }}
+		  {{ form.password1|as_crispy_field }}
+		  {{ form.password2|as_crispy_field }}
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+      <div class="mb-4">
+        <input type="checkbox" name="remember" class="mr-1">
+        <label for="remember" class="text-sm text-gray-600">Remember me</label>
+        <span class="checkmark"></span>
+      </div>
+      <button type="submit" class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-3 w-full">{% trans "Sign Up" %}</button>
+		  </form></form></div><br>
+        <p tabindex="0" class="text-center focus:outline-none text-sm mt-4 font-medium leading-none text-gray-500">Already have an account? <a href="{{ login_url }}" class="hover:text-gray-500 focus:text-gray-500 focus:outline-none focus:underline hover:underline text-sm font-medium leading-none text-gray-800 cursor-pointer"> Sign in here</a></p><br>
+  </div>
+</div>
+
+{% endblock %}

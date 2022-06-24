@@ -1,0 +1,49 @@
+{% include 'index/includes/navbar.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="bg-white block py-10">
+    <div class="max-w-2xl mx-auto">
+        <div class="w-full">
+            <div class="w-full bg-gray-600 h-48 rounded-t-lg"></div>
+            <div class="absolute -mt-20 ml-5">
+                {% if user.socialaccount_set.all.0.get_avatar_url %}
+                <div class="border-gray-300 h-36 w-4/4 rounded-lg shadow-md border-b border-primary">
+                    <img class="rounded-md w-36 h-36" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="Profile picture">
+                </div>
+                {% else %}
+                <div class="border-gray-300 h-36 w-4/4 rounded-lg shadow-md border-b border-primary">
+                    <div class="rounded-md w-36 h-36">
+                        <img class="rounded-md w-36 h-36" src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Z2FtaW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Profile picture">
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="bg-primary border border-primary rounded-b-lg p-5 pt-20 flex flex-col">
+            <a class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 text-white px-6 bg-blue-500 hover:bg-gray-100 text-sm hover:text-black font-bold  rounded-xl transition duration-200" href="{% url 'edit_details' user.id %}">Edit Details</a>
+            <div class=" h-50 leading-9 w-full">
+                {% if request.user.get_full_name %}
+                <h5 class="mb-2 text-xl w-40 font-bold tracking-tight"><p>{{request.user.get_full_name}}</h5>
+                {% else %}
+                <h5 class="mb-2 text-xl w-40 font-bold tracking-tight"><p>{{user.username}}</h5>
+                {% endif %}
+                <p class="font-normal text-gray-700 dark:text-gray-800 " style="margin-bottom:10px;">{{user.email}}</p>
+                <h5 class="mb-1 text-sm font-medium text-gray-900 dark:text-gray-800">Joined on - {{user.date_joined.date}}</h5><br>
+                <h5 class="mb-2 text-xl font-bold tracking-tight font-mono underline" style="margin-bottom:20px;">
+                    Skills - {{form.skills|as_crispy_field}} </h5>
+                <div class=" h-50 w-auto grid grid-cols-3 gap-6 content-center" style="margin-bottom:20px;">
+                    <span class="cursor-pointer w-auto inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
+                  </div>
+                <h5 class="mb-2 text-xl font-bold tracking-tight font-mono underline" style="margin-bottom:20px;">About: </h5>
+                <p class="font-normal text-base text-gray-700 dark:text-gray-800 " style="margin-bottom:20px;">{{form.about|as_crispy_field}}</p>
+                <h5 class="mb-2 text-xl font-bold tracking-tight font-mono underline" style="margin-bottom:20px;">Experience: </h5>
+                <p class="font-normal text-base text-gray-700 dark:text-gray-800 " style="margin-bottom:20px;">{{form.experience|as_crispy_field}}</p>
+                <h5 class="mb-2 text-xl font-bold tracking-tight font-mono underline" style="margin-bottom:20px;">Education: </h5>
+                <p class="font-normal text-base text-gray-700 dark:text-gray-800 " style="margin-bottom:10px;">{{form.education|as_crispy_field}}</p>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

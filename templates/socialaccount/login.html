@@ -1,0 +1,30 @@
+{% extends "socialaccount/base.html" %}
+{% load i18n %}
+
+{% block content %}
+{% if process == "connect" %}
+<script src="https://cdn.tailwindcss.com"></script>
+<br><br><br><div class="max-w-md mx-auto bg-white shadow-xl rounded my-8 ">
+<h1>{% blocktrans with provider.name as provider %}Connect {{ provider }}{% endblocktrans %}</h1>
+<p>{% blocktrans with provider.name as provider %}You are about to connect a new third party account from {{ provider }}.{% endblocktrans %}</p>
+{% else %}<script src="https://cdn.tailwindcss.com"></script>
+  <br><br><br><div class="max-w-md mx-auto bg-white shadow-xl rounded my-8 ">
+  <div class="text-center text-size-500 text-gray-800 py-6 text-2xl">
+    <br><p tabindex="0" class="focus:outline-none text-2xl font-extrabold leading-6 text-gray-800">{% blocktrans with provider.name as provider %}Sign In Via {{ provider }}{% endblocktrans %}</p><br>
+  </div>
+    <div class="bg-gray-20  pb-16">
+    <div class="w-4/5 mx-auto">
+      <div class="mb-4">
+    <p class="no-underline">{% blocktrans with provider.name as provider %}You are about to sign in using a third party account from {{ provider }}.{% endblocktrans %}</p>
+      </div>
+<br>
+      <form method="post">
+  {% csrf_token %}
+        <button type="submit" class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-3 w-full">{% trans "Continue" %}</button>
+</form>
+    </div>
+</div>
+</div>
+{% endif %}
+
+{% endblock %}

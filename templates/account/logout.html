@@ -1,0 +1,28 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign Out" %}{% endblock %}
+
+{% block content %}
+<script src="https://cdn.tailwindcss.com"></script>
+<br><br><br><div class="max-w-md mx-auto bg-white shadow-xl rounded my-8 ">
+  <div class="text-center text-size-500 text-gray-800 py-6 text-2xl">
+    <br><p tabindex="0" class="focus:outline-none text-2xl font-extrabold leading-6 text-gray-800 underline">Sign out?</p><br>
+  </div>
+  <div class="bg-gray-20  pb-16">
+    <div class="w-4/5 mx-auto">      <p class="no-underline text-lg">Are you sure you want to sign out from this website?</p><br>
+
+      <form method="post" action="{% url 'account_logout' %}">
+  {% csrf_token %}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+  {% endif %}
+        <br><button type="submit" class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-3 w-full">{% trans 'Sign Out' %}</button>
+</form>
+<br>
+  </div>
+</div>
+</div>
+
+{% endblock %}

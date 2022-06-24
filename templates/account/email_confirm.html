@@ -1,0 +1,43 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account %}
+
+{% block head_title %}{% trans "Confirm E-mail Address" %}{% endblock %}
+
+
+{% block content %}
+
+{% if confirmation %}
+
+{% user_display confirmation.email_address.user as user_display %}
+<script src="https://cdn.tailwindcss.com"></script>
+<br><br><br><div class="max-w-md mx-auto bg-white shadow-xl rounded my-8 ">
+  <div class="text-center text-size-500 text-gray-800 py-6 text-2xl">
+    <br><p tabindex="0" class="focus:outline-none text-2xl font-extrabold leading-6 text-gray-800">Confirm your Email address</p><br>
+  </div>
+    <div class="bg-gray-20  pb-16">
+    <div class="w-4/5 mx-auto">
+<p>{% blocktrans with confirmation.email_address.email as email %}Please confirm that <a href="mailto:{{ email }}" class="text-sky-700">{{ email }}</a> is an e-mail address for username {{ user_display }}.{% endblocktrans %}</p><br><br>
+      <form class="bg-white" method="POST" action="{% url 'account_confirm_email' confirmation.key %}">
+          {% csrf_token %}
+      <button type="submit" class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-3 w-full">{% trans 'Confirm' %}</button>
+      </form><br>
+    </div></div></div>
+{% else %}
+
+{% url 'account_email' as email_url %}
+<script src="https://cdn.tailwindcss.com"></script>
+<br><br><br><div class="max-w-md mx-auto bg-white shadow-xl rounded my-8 ">
+  <div class="text-center text-size-500 text-gray-800 py-6 text-2xl">
+    <br><p tabindex="0" class="focus:outline-none text-2xl font-extrabold leading-6 text-gray-800">Invalid Link</p><br>
+  </div>
+    <div class="bg-gray-20  pb-16">
+    <div class="w-4/5 mx-auto">
+<p>This e-mail confirmation link expired or is invalid. Please<a href="{{ email_url }}" class="text-sky-700"> issue a new e-mail confirmation request</a></p><br><br>
+        <button type="submit" onclick="window.location.href='{{ email_url }}'" class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-3 w-full">Go to login</button>
+<br>
+    </div></div></div>
+{% endif %}
+
+{% endblock %}
