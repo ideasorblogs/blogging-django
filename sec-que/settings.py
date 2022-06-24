@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'events',
     'phonenumber_field',
     'compressor',
+    'questions',
 ]
 
 SOCIALACCOUNT_PROVIDERS = {
