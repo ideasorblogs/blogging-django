@@ -1,4 +1,3 @@
-{% include 'index/includes/navbar.html' %}
 {% extends "account/base.html" %}
 {% load tailwind_tags %}
 {% load crispy_forms_tags %}
@@ -9,7 +8,6 @@
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 {% block content %}
 {% get_providers as socialaccount_providers %}
-{% block con %}
 <script src="https://cdn.tailwindcss.com"></script>
 <div class="max-w-md mt-20  mx-auto bg-white shadow-xl rounded my-8 ">
   <div class="text-center text-size-500 text-gray-800 py-6 text-2xl">
