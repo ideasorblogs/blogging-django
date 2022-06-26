@@ -4,4 +4,4 @@ from django.shortcuts import render
 # Create your views here.
 
 def questions(request):
-    return HttpResponse('<h1>Under development</h1>')
+    return render(request, 'questions.html')
