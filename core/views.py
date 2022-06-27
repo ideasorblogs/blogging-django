@@ -13,7 +13,7 @@ from htmlmin.decorators import minified_response
 
 # Create your views here.
 
-class TemplateView(View):
+class Dashboardview(View):
     @minified_response
     def newsletter(self, request):
         if request.method == "POST":
