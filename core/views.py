@@ -14,8 +14,6 @@ from htmlmin.decorators import minified_response
 # Create your views here.
 
 class DashboardView(View):
-    template_name = "index/index.html"
-
     @minified_response
     def newsletter(self, request):
         if request.method == "POST":
@@ -24,6 +22,7 @@ class DashboardView(View):
             s = newsletter(name=name, email=email)
             s.save()
             messages.success(request, "subscribed successfully")
+        return render(request, 'index/index.html')
 
 
 
