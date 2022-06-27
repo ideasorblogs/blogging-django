@@ -18,9 +18,9 @@ def core(request):
     if request.method == "POST":
         form = NewsletterForm(request.POST)
         if form.is_valid():
+            if form.email.exists():
+                messages.error(request, "<h1>Error</h1>")
             form.save()
-            if newsletter.objects.filter(email='email').exists():
-                messages.error(request, "Email already exists")
 
     context = {'form':form}
     return render(request, 'index/index.html', context)
