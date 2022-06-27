@@ -31,6 +31,9 @@
               Sign up for Newsletter <i class="fa-solid fa-xl ml-2 fa-envelope-circle-check" style="color:#F6BE00;"></i>
             </h3>
             {% include 'index/newsletter.html' with form=NewsletterForm  %}
+            {% block news %}
+
+            {% endblock %}
           </div>
         </div>
       </div>
