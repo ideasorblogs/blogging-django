@@ -14,7 +14,7 @@ from htmlmin.decorators import minified_response
 # Create your views here.
 
 @minified_response
-class TemplateView(TemplateView):
+class indexView(TemplateView):
     def newsletter(self, request):
         if request.method == "POST":
             name = request.POST.get('name')
