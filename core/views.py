@@ -31,7 +31,7 @@ def newsletter(request):
     if request.method == "POST":
         name = request.POST.get('name')
         email = request.POST.get('email')
-        subscribers = newsletter(name=name, email=email)
+        subscribers = newsletter(subscriber_name=name, email=email)
         subscribers.save()
         return redirect('/')
     else:
