@@ -15,7 +15,7 @@ from htmlmin.decorators import minified_response
 @minified_response
 def core(request):
     form = NewsletterForm()
-    if request.methpd == "POST":
+    if request.method == "POST":
         form.save()
     return render(request, 'index/index.html')
 
