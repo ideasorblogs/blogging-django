@@ -31,7 +31,7 @@ def newsletter(request):
     if request.method == "POST" and 'subscribe' in request.POST:
         name = request.POST['name']
         email = request.POST['email']
-        subscribers = newsletter.objects.create(
+        subscribers = newsletter.object.create(
             name = name,
             email = email,
         )
