@@ -27,7 +27,7 @@ def core(request):
             name = name,
             email = email
         )
-        newsletter.save()
+        newsletter.save(self=email)
         return HttpResponse('<h4>saved</h4>')
     return render(request, 'index/index.html')
 
