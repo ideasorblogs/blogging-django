@@ -20,7 +20,7 @@ def core(request):
         name = request.POST.get('name')
         email = request.POST.get('email')
         s = newsletter(name=name, email=email)
-        if newsletter.objects.filter(email).exists():
+        if newsletter.email.exists():
             messages.error(request, "Email already exists")
         else:
             s.save()
