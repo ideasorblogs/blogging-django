@@ -29,7 +29,7 @@ class ProfileView(LoginRequiredMixin, View):
 @minified_response
 def newsletter(request):
     if request.method == "POST" and 'subscribe' in request.POST:
-        email = request.POST.get('email')
         name = request.POST.get('name')
-        subscribers = newsletter(email=email, name=name)
+        email = request.POST.get('email')
+        subscribers = newsletter(name=name, email=email)
         subscribers.save()
