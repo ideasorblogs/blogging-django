@@ -31,8 +31,8 @@ def newsletter(request):
     if request.methpd == "POST":
         subscibe = NewsletterForm(request.POST)
         if subscibe.is_valid():
-            name = subscibe.cleaned_data['name']
-            email = subscibe.cleaned_data['email']
             subscibe.save()
     else:
         return redirect('/')
+    context = {'form':subscibe}
+    return render(request, 'index/index.html', context)
