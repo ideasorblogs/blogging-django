@@ -12,9 +12,9 @@ from htmlmin.decorators import minified_response
 
 # Create your views here.
 
-@minified_response
+
 def core(request):
-    if request.method == "POST" and 'subscribe' in request.POST:
+    if request.method == "POST":
         name = request.POST.get['name']
         email = request.POST.get['email']
         s = newsletter(name=name, email=email)
