@@ -36,4 +36,4 @@ def newsletter(request):
             form.save()
             messages.success(request, 'Subscribed successfully')
     context = {'form': form}
-    return render(request, 'index/index.html', context)
+    return render(request, 'index/includes/newsletter.html', context)
