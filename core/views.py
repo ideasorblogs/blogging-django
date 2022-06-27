@@ -33,5 +33,6 @@ def newsletter(request):
         email = request.POST.get('email')
         subscribers = newsletter(name=name, email=email)
         subscribers.save()
+        return redirect('/')
     else:
         return HttpResponse('<h1>pass</h1>')
