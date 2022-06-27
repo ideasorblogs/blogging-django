@@ -3,6 +3,7 @@ from .models import *
 
 
 class NewsletterForm(forms.ModelForm):
+
     name = forms.CharField(
         widget=forms.TextInput(
             attrs={
