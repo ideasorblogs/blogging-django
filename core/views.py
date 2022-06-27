@@ -5,7 +5,6 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import TemplateView
 from django.views.generic.edit import UpdateView, DeleteView
 from .models import *
 from .forms import *
@@ -13,16 +12,15 @@ from htmlmin.decorators import minified_response
 
 # Create your views here.
 
-class Dashboardview(View):
-    @minified_response
-    def newsletter(self, request):
-        if request.method == "POST":
-            name = request.POST.get('name')
-            email = request.POST.get('email')
-            s = newsletter(name=name, email=email)
-            s.save()
-            messages.success(request, "subscribed successfully")
-        return render(request, 'index/index.html')
+@minified_response
+def core(request):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        s = newsletter(name=name, email=email)
+        s.save()
+        messages.success(request, "subscribed successfully")
+    return render(request, 'index/index.html')
 
 
 
