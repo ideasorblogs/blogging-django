@@ -13,8 +13,15 @@ from htmlmin.decorators import minified_response
 # Create your views here.
 
 @minified_response
-def core(request):
-    return render(request, 'index/index.html')
+class core():
+    def newsletter(self, request):
+        if request.method == "POST":
+            name = request.POST.get('name')
+            email = request.POST.get('email')
+            s = newsletter(name=name, email=email)
+            s.save()
+            messages.success(request, "subscribed successfully")
+        return render(request, 'index/index.html')
 
 
 
