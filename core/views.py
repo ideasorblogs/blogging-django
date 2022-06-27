@@ -12,8 +12,11 @@ from htmlmin.decorators import minified_response
 
 # Create your views here.
 
-
+@minified_response
 def core(request):
+    form = NewsletterForm()
+    if request.methpd == "POST":
+        form.save()
     return render(request, 'index/index.html')
 
 
@@ -27,12 +30,3 @@ class ProfileView(LoginRequiredMixin, View):
         }
         return render(request, 'user/profile.html', context)
 
-@minified_response
-def newsletter(request):
-    if request.method == "POST":
-        name = request.POST.get('username')
-        email = request.POST.get('email')
-        s = newsletter(username=name, email=email)
-        s.save()
-        messages.success(request, "subscribed successfully")
-    return render(request, 'index/newsletter.html')
