@@ -17,6 +17,7 @@ def core(request):
     form = NewsletterForm()
     if request.method == "POST":
         form = NewsletterForm(request.POST)
+        form.save()
     context = {'form':form}
     return render(request, 'index/index.html', context)
 
