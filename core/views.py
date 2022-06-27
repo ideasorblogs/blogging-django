@@ -26,4 +26,13 @@ class ProfileView(LoginRequiredMixin, View):
         }
         return render(request, 'user/profile.html', context)
 
-
+@minified_response
+def newsletter(request):
+    if request.methpd == "POST":
+        subscibe = NewsletterForm(request.POST)
+        if subscibe.is_valid():
+            name = subscibe.cleaned_data['name']
+            email = subscibe.cleaned_data['email']
+            subscibe.save()
+    else:
+        return redirect('/')
