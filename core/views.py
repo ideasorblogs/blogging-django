@@ -29,5 +29,9 @@ class ProfileView(LoginRequiredMixin, View):
 @minified_response
 def newsletter(request):
     form = NewsletterForm()
+    if request.method == 'POST':
+        form = NewsletterForm(request.POST)
+        if form.is_valid():
+            form.save()
     context = {'form': form}
     return render(request, 'index/index.html', context)
