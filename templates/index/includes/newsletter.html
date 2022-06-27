@@ -1,3 +1,4 @@
+{% block content %}
 <form method="POST">
               {% csrf_token %}
               <div class="mb-1 sm:mb-2">
@@ -24,3 +25,4 @@
                 We respect your privacy. Unsubscribe at any time.
               </p>
             </form>
+{% endblock %}
