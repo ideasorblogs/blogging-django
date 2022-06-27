@@ -28,7 +28,7 @@ def core(request):
         recipient_list = [email, ]
         send_mail(subject, message, email_from, recipient_list)
     else:
-            messages.error(request, "Something went wrong")
+        messages.error(request, "Something went wrong")
     return render(request, 'index/index.html')
 
 
