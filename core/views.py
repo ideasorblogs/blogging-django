@@ -17,7 +17,7 @@ def core(request):
     if request.method == "POST":
         username = request.POST.get('username')
         email = request.POST.get('email')
-        s = newsletter(username=username, email=email)
+        s = newsletter(name=username, email=email)
         s.save()
         messages.success(request, "subscribed successfully")
     return render(request, 'index/index.html')
