@@ -1,5 +1,7 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.mail import message
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -18,6 +20,7 @@ def core(request):
         form = NewsletterForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'subscription successful')
     context = {'form': form}
     return render(request, 'index/index.html', context)
 
