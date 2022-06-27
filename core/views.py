@@ -18,9 +18,8 @@ def core(request):
     if request.method == "POST":
         form = NewsletterForm(request.POST)
         if form.is_valid():
-            if form.email.exists():
-                messages.error(request, "<h1>Error</h1>")
             form.save()
+            messages.success(request, "Subscribed successfully")
 
     context = {'form':form}
     return render(request, 'index/index.html', context)
