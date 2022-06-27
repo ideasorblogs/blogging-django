@@ -13,7 +13,13 @@ from htmlmin.decorators import minified_response
 
 @minified_response
 def core(request):
-    return render(request, 'index/index.html')
+    form = NewsletterForm()
+    if request.method == 'POST':
+        form = NewsletterForm(request.POST)
+        if form.is_valid():
+            form.save()
+    context = {'form': form}
+    return render(request, 'index/index.html', context)
 
 
 
@@ -26,12 +32,3 @@ class ProfileView(LoginRequiredMixin, View):
         }
         return render(request, 'user/profile.html', context)
 
-@minified_response
-def newsletter(request):
-    form = NewsletterForm()
-    if request.method == 'POST':
-        form = NewsletterForm(request.POST)
-        if form.is_valid():
-            form.save()
-    context = {'form': form}
-    return render(request, 'index/index.html', context)
