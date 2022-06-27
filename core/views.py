@@ -1,6 +1,8 @@
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -20,8 +22,13 @@ def core(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Subscribed successfully")
+            subject = 'NewsLetter Subscription'
+            message = 'Hello ' + form.name + ', Thanks for subscribing us. You will get notification of latest articles posted on our website. Please do not reply on this email.'
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [form.email, ]
+            send_mail(subject, message, email_from, recipient_list)
         else:
-            messages.error(request, "Error occured")
+            messages.error(request, "Something went wrong")
     context = {'form':form}
     return render(request, 'index/index.html', context)
 
