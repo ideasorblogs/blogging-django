@@ -16,7 +16,7 @@ from htmlmin.decorators import minified_response
 def core(request):
     form = NewsletterForm()
     if request.method == "POST":
-        form.save()
+        form = NewsletterForm(request.POST)
     context = {'form':form}
     return render(request, 'index/index.html', context)
 
