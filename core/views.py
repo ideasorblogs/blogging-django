@@ -29,10 +29,10 @@ class ProfileView(LoginRequiredMixin, View):
 @minified_response
 def newsletter(request):
     if request.methpd == "POST":
-        subscibe = NewsletterForm(request.POST)
-        if subscibe.is_valid():
-            subscibe.save()
+        form = NewsletterForm()
+        if form.is_valid():
+            form.save()
     else:
         return redirect('/')
-    context = {'form':subscibe}
+    context = {'form':form}
     return render(request, 'index/index.html', context)
