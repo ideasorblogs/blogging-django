@@ -26,13 +26,4 @@ class ProfileView(LoginRequiredMixin, View):
         }
         return render(request, 'user/profile.html', context)
 
-@minified_response
-def newsletter(request):
-    if request.method == "POST":
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        subscribers = newsletter(subscriber_name=name, email=email)
-        subscribers.save()
-        return redirect('/')
-    else:
-        return HttpResponse('<h1>pass</h1>')
+
