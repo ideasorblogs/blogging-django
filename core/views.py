@@ -15,9 +15,9 @@ from htmlmin.decorators import minified_response
 
 def core(request):
     if request.method == "POST":
-        name = request.POST.get('name')
+        username = request.POST.get('username')
         email = request.POST.get('email')
-        s = newsletter(name=name, email=email)
+        s = newsletter(name=username, email=email)
         s.save()
         messages.success(request, "subscribed successfully")
     return render(request, 'index/index.html')
