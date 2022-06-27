@@ -15,6 +15,7 @@ from htmlmin.decorators import minified_response
 
 @minified_response
 class indexView(TemplateView):
+    template_name = "index/index.html"
     def newsletter(self, request):
         if request.method == "POST":
             name = request.POST.get('name')
@@ -22,7 +23,6 @@ class indexView(TemplateView):
             s = newsletter(name=name, email=email)
             s.save()
             messages.success(request, "subscribed successfully")
-        return render(request, 'index/index.html')
 
 
 
