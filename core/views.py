@@ -16,21 +16,20 @@ from htmlmin.decorators import minified_response
 
 @minified_response
 def core(request):
-    form = NewsletterForm()
     if request.method == "POST":
-        form = NewsletterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Subscribed successfully")
-            subject = 'NewsLetter Subscription'
-            message = 'Hello , Thanks for subscribing us. You will get notification of latest articles posted on our website. Please do not reply on this email.'
-            email_from = settings.EMAIL_HOST_USER
-            recipient_list = [form.email, ]
-            send_mail(subject, message, email_from, recipient_list)
-        else:
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        s = newsletter(name=name, email=email)
+        s.save()
+        messages.success(request, "Subscribed successfully")
+        subject = 'NewsLetter Subscription'
+        message = 'Hello ' + name + ', Thanks for subscribing us. You will get notification of latest articles posted on our website. Please do not reply on this email.'
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [email, ]
+        send_mail(subject, message, email_from, recipient_list)
+    else:
             messages.error(request, "Something went wrong")
-    context = {'form':form}
-    return render(request, 'index/index.html', context)
+    return render(request, 'index/index.html')
 
 
 
