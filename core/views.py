@@ -20,16 +20,7 @@ def core(request):
         if form.is_valid():
             form.save()
     context = {'form':form}
-    # if request.method == "POST":
-    #     name = request.POST['name']
-    #     email = request.POST['email']
-    #     newsletter(
-    #         name = name,
-    #         email = email
-    #     )
-    #     newsletter.save()
-    #     return redirect('/')
-    return render(request, 'index/index.html')
+    return render(request, 'index/index.html', context)
 
 
 
