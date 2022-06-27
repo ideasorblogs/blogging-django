@@ -23,7 +23,7 @@ def core(request):
             form.save()
             messages.success(request, "Subscribed successfully")
             subject = 'NewsLetter Subscription'
-            message = 'Hello ' + newsletter.name + ', Thanks for subscribing us. You will get notification of latest articles posted on our website. Please do not reply on this email.'
+            message = 'Hello , Thanks for subscribing us. You will get notification of latest articles posted on our website. Please do not reply on this email.'
             email_from = settings.EMAIL_HOST_USER
             recipient_list = [form.email, ]
             send_mail(subject, message, email_from, recipient_list)
