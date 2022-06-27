@@ -14,7 +14,7 @@ from htmlmin.decorators import minified_response
 # Create your views here.
 
 @minified_response
-class DashboardView(TemplateView):
+class DashboardView(View):
     template_name = "index/index.html"
 
     def newsletter(self, request):
