@@ -18,7 +18,7 @@ def core(request):
     if request.method == "POST":
         form.save()
     context = {'form':form}
-    return render(request, 'index/index.html')
+    return render(request, 'index/index.html', context)
 
 
 
