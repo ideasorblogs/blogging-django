@@ -41,21 +41,4 @@
                 We respect your privacy. Unsubscribe at any time.
               </p>
             </form>
-<script>
-    $(document).on('submit'), "#newsletter_form', function(e){
-        e.preventDefault();
-        $.ajax({
-        type: 'POST'
-        url: ''
-        data:{
-            name:$('#name').val(),
-            email:$('#email').val(),
-            csrfmiddleware:$('input[name="csrfmiddlewaretoken"]').val()
-        },
-        success:function(){
-            alert("create successfully");
-        }
-      });
-    });
-</script>
 {% endblock %}
