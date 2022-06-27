@@ -35,4 +35,4 @@ def newsletter(request):
         s = newsletter(name=name, email=email)
         s.save()
         messages.success(request, "subscribed successfully")
-    return render(request, 'index/newsletter.html')
+    return render(request, 'index/index.html')
