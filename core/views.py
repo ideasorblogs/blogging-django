@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
+from django.views.generic import TemplateView
 from django.views.generic.edit import UpdateView, DeleteView
 from .models import *
 from .forms import *
@@ -13,7 +14,7 @@ from htmlmin.decorators import minified_response
 # Create your views here.
 
 @minified_response
-class core():
+class core(TemplateView):
     def newsletter(self, request):
         if request.method == "POST":
             name = request.POST.get('name')
