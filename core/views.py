@@ -20,7 +20,8 @@ def core(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Subscribed successfully")
-
+        else:
+            messages.error(request, "Error occured")
     context = {'form':form}
     return render(request, 'index/index.html', context)
 
