@@ -14,13 +14,21 @@ from htmlmin.decorators import minified_response
 
 @minified_response
 def core(request):
-    form = NewsletterForm()
+    # form = NewsletterForm()
+    # if request.method == "POST":
+    #     form = NewsletterForm(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    # context = {'form':form}
     if request.method == "POST":
-        form = NewsletterForm(request.POST)
-        if form.is_valid():
-            form.save()
-    context = {'form':form}
-    return render(request, 'index/index.html', context)
+        name = request.POST['name']
+        email = request.POST['email']
+        newsletter.objects.create(
+            name = name,
+            email = email
+        )
+        newsletter.save()
+    return render(request, 'index/index.html')
 
 
 
