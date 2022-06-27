@@ -16,20 +16,6 @@ from htmlmin.decorators import minified_response
 
 @minified_response
 def core(request):
-    return render(request, 'index/index.html')
-
-
-
-class ProfileView(LoginRequiredMixin, View):
-    @minified_response
-    def get(self, request,*args, **kwargs):
-        details = employe_details.objects.filter(employee=request.user)
-        context = {
-            'details': details
-        }
-        return render(request, 'user/profile.html', context)
-
-def newsletter(request):
     if request.method == "POST":
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -43,3 +29,16 @@ def newsletter(request):
         send_mail(subject, message, email_from, recipient_list)
     else:
         messages.error(request, "Something went wrong")
+    return render(request, 'index/index.html')
+
+
+
+class ProfileView(LoginRequiredMixin, View):
+    @minified_response
+    def get(self, request,*args, **kwargs):
+        details = employe_details.objects.filter(employee=request.user)
+        context = {
+            'details': details
+        }
+        return render(request, 'user/profile.html', context)
+
