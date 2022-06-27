@@ -13,7 +13,7 @@ from htmlmin.decorators import minified_response
 # Create your views here.
 
 @minified_response
-def core(request):
+def core(self, request):
     # form = NewsletterForm()
     # if request.method == "POST":
     #     form = NewsletterForm(request.POST)
@@ -27,7 +27,7 @@ def core(request):
             name = name,
             email = email
         )
-        newsletter.save()
+        newsletter.save(self)
         return redirect('/')
     return render(request, 'index/index.html')
 
