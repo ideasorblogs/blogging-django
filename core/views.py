@@ -1,7 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.mail import message
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -15,14 +14,7 @@ from htmlmin.decorators import minified_response
 
 @minified_response
 def core(request):
-    form = NewsletterForm()
-    if request.method == 'POST':
-        form = NewsletterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'subscription successful')
-    context = {'form': form}
-    return render(request, 'index/index.html', context)
+    return render(request, 'index/index.html')
 
 
 
@@ -35,3 +27,13 @@ class ProfileView(LoginRequiredMixin, View):
         }
         return render(request, 'user/profile.html', context)
 
+@minified_response
+def newsletter(request):
+    form = NewsletterForm()
+    if request.method == 'POST':
+        form = NewsletterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Subscribed successfully')
+    context = {'form': form}
+    return render(request, 'index/index.html', context)
