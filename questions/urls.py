@@ -3,4 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.questions, name="questions"),
+    path('details/<slug:slug>', views.questiondetail.as_view(), name="quesdetail"),
+    path('edit/<slug:slug>', views.questionupdate.as_view(), name="quesupdate"),
+    path('delete/<slug:slug>', views.questiondelete.as_view(), name="quesdelete"),
 ]

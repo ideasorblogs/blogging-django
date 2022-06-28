@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'compressor',
     'questions',
+    'blog',
 ]
 
 SOCIALACCOUNT_PROVIDERS = {
