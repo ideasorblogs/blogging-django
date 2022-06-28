@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
+from django.views.generic import TemplateView
 from django.views.generic.edit import UpdateView, DeleteView
 from .models import *
 from .forms import *
@@ -14,25 +15,28 @@ from htmlmin.decorators import minified_response
 
 # Create your views here.
 
-@minified_response
-def core(request):
-    if request.method == "POST":
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        s = newsletter(name=name, email=email)
-        if newsletter.objects.filter(email=email).exists():
-            messages.error(request, "Email already exists")
+class indexview(View):
+    def get(self, request):
+        return render(request, 'index/index.html')
+
+    def post(self, request):
+        if request.method == "POST":
+            name = request.POST.get('name')
+            email = request.POST.get('email')
+            s = newsletter(name=name, email=email)
+            if newsletter.objects.filter(email=email).exists():
+                messages.error(request, "Email already exists")
+            else:
+                s.save()
+                messages.success(request, "Subscribed successfully")
+                # subject = 'NewsLetter Subscription'
+                # message = 'Hello ' + name + ', Thanks for subscribing us. You will get notification of latest articles posted on our website. Please do not reply on this email.'
+                # email_from = settings.EMAIL_HOST_USER
+                # recipient_list = [email, ]
+                # send_mail(subject, message, email_from, recipient_list)
         else:
-            s.save()
-            messages.success(request, "Subscribed successfully")
-            # subject = 'NewsLetter Subscription'
-            # message = 'Hello ' + name + ', Thanks for subscribing us. You will get notification of latest articles posted on our website. Please do not reply on this email.'
-            # email_from = settings.EMAIL_HOST_USER
-            # recipient_list = [email, ]
-            # send_mail(subject, message, email_from, recipient_list)
-    else:
-        messages.error(request, "Something went wrong")
-    return render(request, 'index/index.html')
+            pass
+        return render(request, 'index/index.html')
 
 
 
