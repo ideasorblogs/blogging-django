@@ -115,8 +115,7 @@
 					{% if user.is_authenticated %}
 
 					{% else %}
-					<a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-yellow-500 focus:ring-4 focus:outline-none focus:bg-yellow-500 dark:bg-yellow-500 rounded-xl" href="{% url 'account_login' %}">Sign in</a>
-					<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" href="">Sign Up</a>
+					<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" href="{% url 'account_login' %}">Sign Up/ Sign in</a>
 					{% endif %}
 				</div>
 				<p class="my-4 text-xs text-center text-gray-400">
