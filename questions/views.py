@@ -15,7 +15,6 @@ def questions(request):
     context = {
         'question':qu
     }
-
     return render(request, 'questions/questions.html', context)
 
 class questiondetail(DetailView, DeleteView):
