@@ -3,14 +3,12 @@ import uuid
 from datetime import time
 
 from django.contrib.auth.models import User
-from django.contrib.contenttypes.fields import GenericRelation
 from django.db import models
 import string
 # Create your models here.
 from blog.models import *
 from django.urls import reverse
 from django.utils.text import slugify
-from hitcount.models import HitCount
 
 
 class question(models.Model):
@@ -21,8 +19,7 @@ class question(models.Model):
     questions = models.TextField()
     created_on = models.DateField(auto_now_add=True)
     time = models.TimeField(auto_now=True)
-    hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk',
-     related_query_name='hit_count_generic_relation')
+
 
     def _get_unique_slug(self):
         slug = slugify(self.title)
