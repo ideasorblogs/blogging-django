@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'tailwind',
     'theme',
-    'django_browser_reload',
     "crispy_tailwind",
     'taggit',
     'trainings',
@@ -77,7 +76,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "django_browser_reload.middleware.BrowserReloadMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 

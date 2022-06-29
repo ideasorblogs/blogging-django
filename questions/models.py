@@ -1,6 +1,10 @@
+import random
+import uuid
+from datetime import time
+
 from django.contrib.auth.models import User
 from django.db import models
-
+import string
 # Create your models here.
 from blog.models import *
 from django.urls import reverse
@@ -17,8 +21,15 @@ class question(models.Model):
     time = models.TimeField(auto_now=True)
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
-        super(question, self).save(*args, **kwargs)
+        lower_case = 'abcedfghijklmnopqrstuvwxyz'
+        upper_case = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        number = '123456789'
+        generate = lower_case + upper_case + number
+        slug_length = 3
+        slug_gen = "".join(random.sample(generate, slug_length))
+        string = "%s-%s" % (slug_gen[0:], self.title)
+        self.slug = slugify(string)
+        super(question, self).save()
 
     def __str__(self):
         return self.title

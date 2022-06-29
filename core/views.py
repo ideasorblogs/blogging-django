@@ -52,12 +52,16 @@ class ProfileView(LoginRequiredMixin, View):
         return render(request, 'user/profile.html', context)
 
 
-class addquestion(CreateView):
+class addquestion(LoginRequiredMixin,CreateView):
     model = question
     form_class = QuestionForm
     template_name = "questions/add_questions.html"
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 
