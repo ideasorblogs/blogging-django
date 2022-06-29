@@ -102,16 +102,18 @@
 					<li class="mb-1">
 						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{% url 'events' %}">Events</a>
 					</li>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{% url 'profile' request.user %}">My profile</a>
+					</li>
 					<div class="flex items-center justify-center">
 					</div>
 				</ul>
 			</div>
-			<div class="mt-auto">add_question
+			<div class="mt-auto">
 				<div class="pt-6">
-					<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" href="">Post your Questions</a>
+					<a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-yellow-500 focus:ring-4 focus:outline-none focus:bg-yellow-500 dark:bg-yellow-500 rounded-xl text-white" href="{% url 'add_question' %}">Post your Question <i class="fa-solid fa-pen ml-2"></i></a>
 					{% if user.is_authenticated %}
-					<button onclick="window.location.href='{% url 'profile' request.user %}'" type="button" class="text-white bg-yellow-500 hover:bg-blue-800 focus:ring-4  focus:outline-none focus:bg-yellow-500 font-medium rounded-lg text-sm px-4 py-2  text-center mr-3 md:mr-0 dark:bg-yellow-500 dark:hover:bg-blue-700 ">
-			  {{request.user.first_name.0}}</button>
+
 					{% else %}
 					<a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-yellow-500 focus:ring-4 focus:outline-none focus:bg-yellow-500 dark:bg-yellow-500 rounded-xl" href="{% url 'account_login' %}">Sign in</a>
 					<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" href="">Sign Up</a>
