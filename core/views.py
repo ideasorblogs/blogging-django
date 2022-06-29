@@ -51,7 +51,6 @@ class ProfileView(LoginRequiredMixin, View):
         }
         return render(request, 'user/profile.html', context)
 
-
 class addquestion(LoginRequiredMixin,CreateView):
     model = question
     form_class = QuestionForm

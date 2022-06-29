@@ -15,12 +15,14 @@ def questions(request):
     context = {
         'question':qu
     }
+
     return render(request, 'questions/questions.html', context)
 
 class questiondetail(DetailView, DeleteView):
     model = question
     template_name = "questions/question_details.html"
     success_url = reverse_lazy('questions')
+    count_hit = True
 
 
 class questionupdate(UpdateView):
