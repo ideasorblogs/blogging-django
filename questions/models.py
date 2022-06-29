@@ -20,16 +20,26 @@ class question(models.Model):
     created_on = models.DateField(auto_now_add=True)
     time = models.TimeField(auto_now=True)
 
+    def _get_unique_slug(self):
+        slug = slugify(self.title)
+        unique_slug = slug
+        while question.objects.filter(slug=unique_slug).exists():
+            lower_case = string.ascii_lowercase
+            upper_case = string.ascii_uppercase
+            number = string.digits
+            generate = lower_case + upper_case + number
+            pass_length = 4
+            password_gen = "".join(random.sample(generate, pass_length))
+            unique_slug = '{}-{}'.format(slug, password_gen)
+        return unique_slug
+
     def save(self, *args, **kwargs):
-        lower_case = 'abcedfghijklmnopqrstuvwxyz'
-        upper_case = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-        number = '123456789'
-        generate = lower_case + upper_case + number
-        slug_length = 3
-        slug_gen = "".join(random.sample(generate, slug_length))
-        string = "%s-%s" % (slug_gen[0:], self.title)
-        self.slug = slugify(string)
-        super(question, self).save()
+        if not self.slug:
+            self.slug = self._get_unique_slug()
+            super().save(*args, **kwargs)
+        else:
+            self.slug = slugify(self.title)
+            super(question, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title

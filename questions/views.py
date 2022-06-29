@@ -25,14 +25,15 @@ class questiondetail(DetailView, DeleteView):
 
 class questionupdate(UpdateView):
     model = question
+    form_class = UpdateForm
     template_name = "questions/update_question.html"
-    fields = ['title', 'questions', 'categorie']
     slug_url_kwarg = 'slug'
     slug_field = 'slug'
 
+
 class questiondelete(DeleteView):
     model = question
-    template_name = "questions/question_details.html"
+    template_name = "questions/update_question.html"
     slug_url_kwarg = 'slug'
     slug_field = 'slug'
     success_url = reverse_lazy('questions')

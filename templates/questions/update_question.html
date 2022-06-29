@@ -1,5 +1,24 @@
-<form method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Submit</button>
-</form>
+{% include 'index/includes/navbar.html' %}
+<div class='flex items-center justify-center min-h-screen '>
+		<div class='mt-2 px-10 py-8 mx-auto bg-white rounded-lg shadow-md'>
+			<div class='max-w-2xl mx-auto space-y-6'>
+				<form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+					<h2 class="text-2xl font-bold ">Update your Question</h2>
+					<hr class="my-6">
+					<label class="uppercase text-sm font-bold opacity-70">Question Title</label>
+                    {{form.title}}
+					<label class="uppercase text-sm font-bold opacity-70">Describe</label>
+					{{form.questions}}
+					<label class="uppercase text-sm font-bold opacity-70">Add Category</label>
+					{{form.categorie}}
+					<div class="my-2 font-medium opacity-70">
+						<input type="checkbox">
+						Subscribe and follow company updates.
+					</div>
+				<button type="submit" class="text-white bg-yellow-500 hover:bg-blue-800 focus:ring-4 mt-8 focus:outline-none focus:bg-yellow-500 font-medium rounded-lg text-sm px-4 py-2 text-center md:mr-0 dark:bg-yellow-500 dark:hover:bg-blue-700 ">
+			Update<i class="fa-solid fa-file-circle-question ml-2"></i></button>
+				</form>
+			</div>
+		</div>
+	</div>
