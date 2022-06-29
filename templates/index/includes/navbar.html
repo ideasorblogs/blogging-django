@@ -106,10 +106,9 @@
 					</div>
 				</ul>
 			</div>
-			<div class="mt-auto">
+			<div class="mt-auto">add_question
 				<div class="pt-6">
-					<button onclick="window.location.href='{% url 'add_question' %}'" type="button" class="text-white bg-yellow-500 hover:bg-blue-800 focus:ring-4 ml-6 focus:outline-none focus:bg-yellow-500 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-yellow-500 dark:hover:bg-blue-700 ">
-		Post your Questions<i class="fa-solid fa-pen ml-2"></i></button>
+					<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" href="">Post your Questions</a>
 					{% if user.is_authenticated %}
 					<button onclick="window.location.href='{% url 'profile' request.user %}'" type="button" class="text-white bg-yellow-500 hover:bg-blue-800 focus:ring-4  focus:outline-none focus:bg-yellow-500 font-medium rounded-lg text-sm px-4 py-2  text-center mr-3 md:mr-0 dark:bg-yellow-500 dark:hover:bg-blue-700 ">
 			  {{request.user.first_name.0}}</button>
