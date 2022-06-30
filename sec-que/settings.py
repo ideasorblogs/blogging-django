@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     'questions',
     'blog',
     'hitcount',
-    'ckeditor',
 ]
 
 SOCIALACCOUNT_PROVIDERS = {
