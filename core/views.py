@@ -45,7 +45,7 @@ class indexview(View):
 class ProfileView(LoginRequiredMixin, View):
     @minified_response
     def get(self, request,*args, **kwargs):
-        details = employe_details.objects.filter(employee=request.user)
+        details = User.objects.all()
         context = {
             'details': details
         }
