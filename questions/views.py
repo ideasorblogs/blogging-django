@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView, ListView
+from hitcount.views import HitCountDetailView
 from htmlmin.decorators import minified_response
 
 from .models import *
@@ -14,10 +15,11 @@ class QuestionListview(ListView):
     model = question
     template_name = 'questions/questions.html'
     context_object_name = 'count'
+    ordering = '-time'
+
     def count(self, request):
         count = question.objects.count()
         return render(request, 'questions/questions.html', count)
-
 
 def search(request):
     quest = None
@@ -28,7 +30,7 @@ def search(request):
 
     return render(request, 'questions/question_search.html', {'qu': query, 'qr': quest})
 
-class questiondetail(DetailView, DeleteView):
+class questiondetail(HitCountDetailView, DeleteView):
     model = question
     template_name = "questions/question_details.html"
     success_url = reverse_lazy('questions')

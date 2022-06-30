@@ -2,22 +2,33 @@ import random
 import uuid
 from datetime import time
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.fields import GenericRelation
 from django.db import models
 import string
 # Create your models here.
 from blog.models import *
 from django.urls import reverse
 from django.utils.text import slugify
+from hitcount.models import HitCountMixin, HitCount
+from taggit.managers import TaggableManager
 
 
-class question(models.Model):
+class question(models.Model, HitCountMixin):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True, auto_created=True)
-    categorie = models.ForeignKey(category, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     questions = models.TextField()
     created_on = models.DateField(auto_now_add=True)
     time = models.TimeField(auto_now=True)
+    tags = TaggableManager(blank=True)
+
+    hit_count_generic = GenericRelation(
+        HitCount, object_id_field='object_pk',
+        related_query_name='hit_count_generic_relation'
+    )
+
+    def current_hit_count(self):
+        return self.hit_count.hits
 
     def _get_unique_slug(self):
         slug = slugify(self.title)
