@@ -9,7 +9,6 @@ from .models import *
 from blog.models import *
 # Create your views here.
 from questions.forms import *
-from .filters import *
 
 class QuestionListview(ListView):
     model = question
@@ -19,10 +18,6 @@ class QuestionListview(ListView):
         count = question.objects.count()
         return render(request, 'questions/questions.html', count)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['filter'] = QuestionFilter(self.request.GET, queryset=self.get_queryset())
-        return context
 
 def search(request):
     quest = None

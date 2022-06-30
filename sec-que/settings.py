@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'compressor',
     'questions',
     'blog',
-    'widget_tweaks'
 ]
 
 SOCIALACCOUNT_PROVIDERS = {
