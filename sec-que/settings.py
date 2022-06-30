@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'compressor',
     'questions',
     'blog',
-    'django_filters',
     'widget_tweaks'
 ]
 
@@ -243,4 +242,3 @@ HTML_MINIFY = True
 # STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATICFILES_STORAGE =  'django.contrib.staticfiles.storage.StaticFilesStorage'
 
-FILTERS_EMPTY_CHOICE_LABEL = 'All'
