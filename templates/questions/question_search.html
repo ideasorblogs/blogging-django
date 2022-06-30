@@ -1,0 +1,29 @@
+{% include 'index/includes/navbar.html' %}
+{% block content %}
+    <div class="max-w-2xl px-8 py-5 mx-auto bg-white rounded-lg">
+        <form method="get" enctype="multipart/form-data" action="{% url 'search' %}">
+            <input type="search" name="q" class="w-full py-2 pl-4 pr-4 text-gray-700 bg-white border rounded-md focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300" placeholder="Search">
+        </form><hr>
+       </div>
+{% for i in qr %}
+    <div class="max-w-2xl px-8 py-3 mx-auto bg-white rounded-lg">
+        <div class="flex items-center justify-between">
+            <span class="text-xs font-light text-gray-600 dark:text-gray-400">Posted on {{i.created_on}} {{i.time}}</span>
+            <a href="#" class="text-blue-600 text-sm dark:text-blue-400 hover:underline">Read more</a>
+        </div>
+
+        <div class="mt-2">
+            <a href="{% url 'quesdetail' i.slug %}" class="text-xl  text-black hover:text-indigo-600 hover:underline">{{i.title}}</a>
+            <p class="mt-2 text-sm text-gray-800">{{i.questions|safe|truncatewords:"15"}}</p>
+        </div>
+
+        <div class="flex items-center justify-between mt-4">
+            <div class="flex items-center">
+                <p class="text-gray-500 text-xs">Asked by <a href="" class="cursor-pointer">{{i.author}}</a></p>
+            </div>
+        </div><hr class="mt-3">
+    </div>
+
+{% endfor %}
+
+{% endblock %}

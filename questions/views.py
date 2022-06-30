@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -8,6 +9,7 @@ from .models import *
 from blog.models import *
 # Create your views here.
 from questions.forms import *
+from .filters import *
 
 class QuestionListview(ListView):
     model = question
@@ -16,6 +18,20 @@ class QuestionListview(ListView):
     def count(self, request):
         count = question.objects.count()
         return render(request, 'questions/questions.html', count)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = QuestionFilter(self.request.GET, queryset=self.get_queryset())
+        return context
+
+def search(request):
+    quest = None
+    query = None
+    if 'q' in request.GET:
+        query = request.GET.get('q')
+        quest = question.objects.all().filter(Q(title__icontains=query) | Q(questions__icontains=query))
+
+    return render(request, 'questions/question_search.html', {'qu': query, 'qr': quest})
 
 class questiondetail(DetailView, DeleteView):
     model = question

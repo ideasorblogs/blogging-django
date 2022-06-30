@@ -8,8 +8,13 @@ from django.utils.text import slugify
 
 
 class category(models.Model):
-    name = models.CharField(max_length=50, unique=True)
+    name = models.CharField(max_length=50, unique=True, default="django")
     slug = models.SlugField(max_length=200, unique=True)
+
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
+        ordering = ['name']
 
     def __str__(self):
         return self.name
@@ -35,4 +40,5 @@ class blog(models.Model):
 
     def get_absolute_url(self):
         return reverse('details', args=[self.slug])
+
 

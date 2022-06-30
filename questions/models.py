@@ -1,7 +1,7 @@
 import random
 import uuid
 from datetime import time
-
+import django_filters
 from django.contrib.auth.models import User
 from django.db import models
 import string
@@ -19,7 +19,6 @@ class question(models.Model):
     questions = models.TextField()
     created_on = models.DateField(auto_now_add=True)
     time = models.TimeField(auto_now=True)
-
 
     def _get_unique_slug(self):
         slug = slugify(self.title)
@@ -47,4 +46,5 @@ class question(models.Model):
 
     def get_absolute_url(self):
         return reverse('quesdetail', args=[self.slug])
+
 
