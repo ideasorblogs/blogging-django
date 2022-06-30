@@ -7,4 +7,5 @@ urlpatterns = [
     path('edit/<slug:slug>', views.questionupdate.as_view(), name="quesupdate"),
     path('delete/<slug:slug>', views.questionupdate.as_view(), name="quesdelete"),
     path('search/', views.search, name="search"),
+    path('latest/', views.LatestView.as_view(), name="latest")
 ]

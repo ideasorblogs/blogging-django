@@ -14,17 +14,16 @@
     <div class="max-w-2xl px-8 py-3 mx-auto bg-white rounded-lg">
         <div class="flex items-center justify-between">
             <span class="text-xs font-light text-gray-600 dark:text-gray-400">Posted on {{q.created_on}} {{q.time}}</span>
-            <a href="#" class="text-blue-600 text-sm dark:text-blue-400 hover:underline">Read more</a>
 
         </div>
 
         <div class="mt-2">
-            <a href="{% url 'quesdetail' q.slug %}" class="text-xl  text-black hover:text-indigo-600 hover:underline">{{q.title}}</a>
+            <a href="{% url 'quesdetail' q.slug %}" class="text-xl font-bold text-black hover:text-indigo-600 hover:underline">{{q.title}} ?</a>
             <p class="mt-2 text-sm text-gray-800">{{q.questions|safe|truncatewords:"30"}}</p>
         </div>
         {% for tag in q.tags.all|slice:"4" %}
-        <div class="mt-6 mr-4 text-xs inline-flex items-center leading-sm uppercase px-3 py-1 bg-zinc-200 text-black ">
-            <a href="#">{{tag.name}}</a>
+        <div class="mt-6 mr-4 text-xs inline-flex items-center leading-sm uppercase px-3 py-1 bg-amber-400 text-black ">
+            <a href="#" class="text-white font-bold">{{tag.name}}</a>
         </div>
         {% endfor %}
 

@@ -17,15 +17,15 @@ class question(models.Model, HitCountMixin):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True, auto_created=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    questions = models.TextField()
+    questions = models.TextField(blank=True, null=True)
     created_on = models.DateField(auto_now_add=True)
     time = models.TimeField(auto_now=True)
     tags = TaggableManager(blank=True)
-
     hit_count_generic = GenericRelation(
         HitCount, object_id_field='object_pk',
         related_query_name='hit_count_generic_relation'
     )
+
 
     def current_hit_count(self):
         return self.hit_count.hits

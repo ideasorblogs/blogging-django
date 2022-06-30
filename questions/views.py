@@ -21,6 +21,14 @@ class QuestionListview(ListView):
         count = question.objects.count()
         return render(request, 'questions/questions.html', count)
 
+class LatestView(ListView):
+    model = question
+    template_name = 'questions/questions_latest.html'
+    context_object_name = 'latest'
+    ordering = '-time'
+
+
+
 def search(request):
     quest = None
     query = None
@@ -35,6 +43,7 @@ class questiondetail(HitCountDetailView, DeleteView):
     template_name = "questions/question_details.html"
     success_url = reverse_lazy('questions')
     count_hit = True
+
 
 
 class questionupdate(UpdateView):
