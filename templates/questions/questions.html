@@ -37,17 +37,18 @@
     </div>
 {% endfor %}
 <br><div class='flex items-center justify-center'>
-    <div class="flex flex-col items-center mb-8 px-4 mx-auto mt-8">
+    <div class="flex items-center mb-8 px-4  mt-8">
+        <div class="font-sans flex justify-end space-x-2 select-none">
 
-        <div class="font-sans flex justify-end space-x-1 select-none">
             {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}" class="flex text-sm items-center px-4 py-2 text-gray-500 bg-gray-300 ">
+            <a href="?page={{ page_obj.previous_page_number }}" class="flex text-sm  items-center px-4 py-2 text-gray-500 bg-gray-300 ">
                 Previous
             </a>
             <a href="?page=1" class="px-4 py-2 text-gray-700 text-sm bg-gray-300  hover:bg-blue-800 hover:text-white" style="transition: all 0.2s ease;">
                 First
             </a>
             {% endif %}
+
             {% if page_obj.has_next %}
             <a href="?page={{page_obj.next_page_number}}" class="px-4 text-sm py-2 text-gray-700 bg-gray-200 hover:bg-blue-800 hover:text-white" style="transition: all 0.2s ease;">
                 {{page_obj.next_page_number}}
@@ -58,8 +59,9 @@
             </a>
             {% endif %}
         </div>
-                <p class="text-xs text-black mt-5">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</p>
     </div>
 </div>
-
+<div class="flex items-center justify-center">
+    <p class="text-xs text-black ">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</p>
+</div>
 {% endblock %}

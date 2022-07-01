@@ -17,7 +17,7 @@ class QuestionListview(ListView):
     template_name = 'questions/questions.html'
     context_object_name = 'count'
     ordering = '-created_on', '-time'
-    paginate_by = 8
+    paginate_by = 10
 
 
 def count(request):
