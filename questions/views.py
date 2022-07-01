@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -16,10 +17,12 @@ class QuestionListview(ListView):
     template_name = 'questions/questions.html'
     context_object_name = 'count'
     ordering = '-created_on', '-time'
+    paginate_by = 8
 
-    def count(self, request):
-        count = question.objects.count()
-        return render(request, 'questions/questions.html', count)
+
+def count(request):
+    count = question.objects.count()
+    return render(request, 'questions/questions.html', count)
 
 
 def search(request):
