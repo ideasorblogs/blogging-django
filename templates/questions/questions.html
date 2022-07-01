@@ -23,7 +23,7 @@
         </div>
         {% for tag in q.tags.all|slice:"4" %}
         <div class="mt-6 mr-4 text-xs inline-flex items-center leading-sm uppercase px-3 py-1 bg-amber-400 text-black ">
-            <a href="#" class="text-white font-bold">{{tag.name}}</a>
+            <a href="{% url 'tags' tag.slug %}" class="text-white font-bold">{{tag.name}}</a>
         </div>
         {% endfor %}
 

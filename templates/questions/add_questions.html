@@ -2,7 +2,7 @@
 <!-- component -->
 <div class='flex items-center justify-center min-h-screen '>
 		<div class='mt-2 px-10 py-8 mx-auto bg-white rounded-lg shadow-md'>
-			<div class='max-w-2xl mx-auto space-y-6'>
+			<div class='max-w2xl mx-auto space-y-6'>
 
 				<form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
@@ -10,9 +10,14 @@
 					<hr class="my-6">
 					<label class="uppercase text-sm font-bold opacity-70">Question Title</label>
                     {{form.title}}
+					<div class="mb-5 mt-5">
 					<label class="uppercase text-sm font-bold opacity-70">Describe</label>
+					</div>
 					{{form.questions}}
+					{{form.media}}
+					<div class="mt-10">
 					<label class="uppercase text-sm font-bold opacity-70">Add Tags to your question</label>
+					</div>
 					{{form.tags}}
 					<div class="my-2 font-medium opacity-70">
 						<input type="checkbox">

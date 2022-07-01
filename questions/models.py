@@ -1,6 +1,8 @@
 import random
 import uuid
 from datetime import time
+
+from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.fields import GenericRelation
 from django.db import models
@@ -17,7 +19,7 @@ class question(models.Model, HitCountMixin):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True, auto_created=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    questions = models.TextField(blank=True, null=True)
+    questions = RichTextField()
     created_on = models.DateField(auto_now_add=True)
     time = models.TimeField(auto_now=True)
     tags = TaggableManager(blank=True)
@@ -25,7 +27,6 @@ class question(models.Model, HitCountMixin):
         HitCount, object_id_field='object_pk',
         related_query_name='hit_count_generic_relation'
     )
-
 
     def current_hit_count(self):
         return self.hit_count.hits
@@ -56,5 +57,6 @@ class question(models.Model, HitCountMixin):
 
     def get_absolute_url(self):
         return reverse('quesdetail', args=[self.slug])
+
 
 

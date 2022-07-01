@@ -15,18 +15,11 @@ class QuestionListview(ListView):
     model = question
     template_name = 'questions/questions.html'
     context_object_name = 'count'
-    ordering = '-time'
+    ordering = '-created_on', '-time'
 
     def count(self, request):
         count = question.objects.count()
         return render(request, 'questions/questions.html', count)
-
-class LatestView(ListView):
-    model = question
-    template_name = 'questions/questions_latest.html'
-    context_object_name = 'latest'
-    ordering = '-time'
-
 
 
 def search(request):
@@ -37,6 +30,14 @@ def search(request):
         quest = question.objects.all().filter(Q(title__icontains=query) | Q(questions__icontains=query))
 
     return render(request, 'questions/question_search.html', {'qu': query, 'qr': quest})
+
+class Tags(ListView):
+    model = question
+    template_name = 'questions/questions.html'
+    context_object_name = 'tags'
+
+    def get_queryset(self):
+        return question.objects.filter(tags__slug=self.kwargs.get('slug'))
 
 class questiondetail(HitCountDetailView, DeleteView):
     model = question

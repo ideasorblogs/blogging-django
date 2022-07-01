@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'questions',
     'blog',
     'hitcount',
+    'ckeditor',
 ]
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -242,3 +243,17 @@ HTML_MINIFY = True
 # STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATICFILES_STORAGE =  'django.contrib.staticfiles.storage.StaticFilesStorage'
 
+CKEDITOR_CONFIGS = {
+'default': {
+    'toolbar': 'Custom',
+    'toolbar_Custom': [
+        ['Bold', 'Italic', 'Underline', 'Image'],
+        [ 'Styles','Font','FontSize' ],
+        ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight',
+         'JustifyBlock'],
+        ['Link', 'Unlink'],
+        ['RemoveFormat', 'Source']
+    ],
+            'width': 'auto',
+          },
+    }
