@@ -248,7 +248,7 @@ CKEDITOR_CONFIGS = {
     'toolbar': 'Custom',
     'toolbar_Custom': [
         ['Bold', 'Italic', 'Underline'],
-        [ 'Styles','FontSize' ],
+        [ 'Styles','Format','FontSize' ],
         ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight',
          'JustifyBlock'],
         ['Link', 'Unlink'],
