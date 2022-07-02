@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'blog',
     'hitcount',
     'ckeditor',
+    'django_db_logger',
 ]
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -248,7 +249,7 @@ CKEDITOR_CONFIGS = {
     'toolbar': 'Custom',
     'toolbar_Custom': [
         ['Bold', 'Italic', 'Underline'],
-        [ 'Styles','Format','FontSize' ],
+        [ 'Styles','Format'],
         ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight',
          'JustifyBlock'],
         ['Link', 'Unlink'],
@@ -257,5 +258,43 @@ CKEDITOR_CONFIGS = {
           },
     }
 
+
+
 TIME_ZONE =  'Asia/Kolkata'
 USE_TZ = True
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(asctime)s %(message)s'
+        },
+    },
+    'handlers': {
+        'db_log': {
+            'level': 'DEBUG',
+            'class': 'django_db_logger.db_log_handler.DatabaseLogHandler'
+        },
+    },
+    'loggers': {
+        'db': {
+            'handlers': ['db_log'],
+            'level': 'DEBUG'
+        },
+        'django.request': { # logging 500 errors to database
+            'handlers': ['db_log'],
+            'level': 'ERROR',
+            'propagate': False,
+        }
+    }
+}
+
+
+
+
+
+

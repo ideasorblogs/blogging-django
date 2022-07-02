@@ -17,12 +17,15 @@ class QuestionListview(ListView):
     template_name = 'questions/questions.html'
     context_object_name = 'count'
     ordering = '-created_on', '-time'
-    paginate_by = 10
+    paginate_by = 2
 
 
 def count(request):
     count = question.objects.count()
-    return render(request, 'questions/questions.html', count)
+    context = {
+        'count':count
+    }
+    return render(request, 'questions/questions.html', context)
 
 
 def search(request):
@@ -38,6 +41,7 @@ class Tags(ListView):
     model = question
     template_name = 'questions/questions.html'
     context_object_name = 'tags'
+    paginate_by = 10
 
     def get_queryset(self):
         return question.objects.filter(tags__slug=self.kwargs.get('slug'))
