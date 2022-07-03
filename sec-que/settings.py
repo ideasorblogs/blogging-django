@@ -64,8 +64,8 @@ SOCIALACCOUNT_PROVIDERS = {
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
         'APP': {
-            'client_id': '176744576282-h2q6bma5lomdktvlseh0vb073tna03mp.apps.googleusercontent.com',
-            'secret': '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',
+            'client_id': '176744576282-b4kb4mdbmar60j0hc7eskcf9rdhu813k.apps.googleusercontent.com',
+            'secret': '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',
             'key': ''
         }
     }
