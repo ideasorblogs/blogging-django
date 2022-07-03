@@ -19,7 +19,7 @@ class QuestionListview(ListView):
     template_name = 'questions/questions.html'
     context_object_name = 'count'
     ordering = '-created_on', '-time'
-    paginate_by = 2
+    paginate_by = 10
 
 
 
