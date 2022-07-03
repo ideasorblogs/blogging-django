@@ -56,14 +56,14 @@
             <a href="#" class="flex text-sm  items-center px-4 py-2 text-gray-500 bg-gray-300 ">
                 {{ i }}
             </a>
-            {% elif i > page_obj.number|add:'-3' and i < page_obj.number|add:'1' %}
+            {% elif i > page_obj.number|add:'-3' and i < page_obj.number|add:'2' %}
             <a href="?page={{ i }}" class="flex text-sm  items-center px-4 py-2 text-gray-500 bg-gray-300 ">
             {{ i }}
             </a>
             {% endif %}
             {% endfor %}
-            {% if page_obj.paginator.num_pages > page_obj.number|add:'1' %}
-            <a href="?page={{ page_obj.number|add:'1' }}" class="flex text-sm  items-center px-4 py-2 text-gray-500 bg-gray-300 ">
+            {% if page_obj.paginator.num_pages > page_obj.number|add:'2' %}
+            <a href="?page={{ page_obj.number|add:'2' }}" class="flex text-sm  items-center px-4 py-2 text-gray-500 bg-gray-300 ">
             ...
             </a>
                 {% endif %}
