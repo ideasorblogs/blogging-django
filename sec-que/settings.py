@@ -58,18 +58,6 @@ INSTALLED_APPS = [
     'django_db_logger',
 ]
 
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        # For each OAuth based provider, either add a ``SocialApp``
-        # (``socialaccount`` app) containing the required client
-        # credentials, or list them here:
-        'APP': {
-            'client_id': '176744576282-b4kb4mdbmar60j0hc7eskcf9rdhu813k.apps.googleusercontent.com',
-            'secret': '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',
-            'key': ''
-        }
-    }
-}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
