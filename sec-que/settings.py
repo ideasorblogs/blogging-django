@@ -65,7 +65,7 @@ SOCIALACCOUNT_PROVIDERS = {
         # credentials, or list them here:
         'APP': {
             'client_id': '176744576282-h2q6bma5lomdktvlseh0vb073tna03mp.apps.googleusercontent.com',
-            'secret': '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',
+            'secret': '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',
             'key': ''
         }
     }
