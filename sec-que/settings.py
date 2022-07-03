@@ -209,6 +209,7 @@ ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
+
 TAILWIND_APP_NAME = 'theme'
 
 INTERNAL_IPS = [

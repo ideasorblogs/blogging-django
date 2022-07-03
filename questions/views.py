@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.core.mail import send_mail
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import HttpResponse
@@ -18,6 +20,7 @@ class QuestionListview(ListView):
     context_object_name = 'count'
     ordering = '-created_on', '-time'
     paginate_by = 2
+
 
 
 def count(request):
