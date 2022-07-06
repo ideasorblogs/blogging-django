@@ -290,7 +290,7 @@ LOGGING = {
 }
 
 
-SITE_ID = 2
+SITE_ID = 3
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
