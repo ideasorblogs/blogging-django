@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'hitcount',
     'ckeditor',
     'django_db_logger',
+    'django_extensions',
 ]
 
 
@@ -96,7 +97,7 @@ WSGI_APPLICATION = 'sec-que.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
+#
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -104,6 +105,16 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'd4j54gkfmtan5b',
+#         'HOST': 'ec2-44-197-128-108.compute-1.amazonaws.com',
+#         'USER': 'ubjgumugbdqjjv',
+#         'PASSWORD': '7c5cb670fffd153cd6e5345540b7ed903d821978a507c4535228b0e062b34a32',
+#         'PORT': '5432'
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -127,13 +138,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_TZ = True
+TIME_ZONE = 'Asia/Kolkata'
 
 
 # Static files (CSS, JavaScript, Images)
