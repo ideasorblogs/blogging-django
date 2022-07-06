@@ -38,10 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.github',
     'allauth.socialaccount.providers.google',
     'crispy_forms',
     'tailwind',
@@ -159,7 +159,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = "tailwind"
 
-SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -284,12 +283,15 @@ LOGGING = {
     }
 }
 
-SOCIALACCOUNT_PROVIDERS = {
-    'github': {
-        'SCOPE': [
-            'user',
-        ],
-    }
-}
 
 SITE_ID = 2
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': '176744576282-281bhp89al8ger46d5am53anotdr5m66.apps.googleusercontent.com',
+            'secret': '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',
+            'key': ''
+        }
+    }
+}
