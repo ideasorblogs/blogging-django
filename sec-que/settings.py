@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-9u0v3x$txn6sfd3g*e1sx*o34#wdmj2)n9gu6(f&#rez)%u@-9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['sec-blog-que.herokuapp.com', '127.0.0.1']
 
@@ -37,12 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.github',
+    'core',
     'crispy_forms',
     'tailwind',
     'theme',
@@ -293,5 +294,10 @@ SOCIALACCOUNT_PROVIDERS = {
             'secret': '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',
             'key': ''
         }
+    },
+    'github': {
+            'SCOPE': [
+                'user',
+            ],
     }
 }
