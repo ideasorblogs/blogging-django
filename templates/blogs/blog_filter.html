@@ -1,0 +1,22 @@
+  <div class="relative">
+	<div class="absolute flex items-center ml-2 h-full">
+
+	</div>
+      <form method="get" enctype="multipart/form-data" action="{% url 'search' %}">
+          {% csrf_token %}
+	<input type="search" name="q" required placeholder="Search by Blogs, tags, etc," class="px-8 py-3 w-full rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+		  <a href="{% url 'add_blog' %}" class="px-4 py-2 mt-3 mr-3 bg-gray-200 hover:bg-gray-200 text-gray-800 text-xs font-medium rounded-md">
+		Create a Blog <i class="fa-solid fa-marker ml-1"></i>
+	  </a>
+		  <button type="submit" class="px-4 py-2 mt-3 bg-gray-200 hover:bg-gray-200 text-gray-800 text-xs font-medium rounded-md">
+		Search
+	  </button>
+  </form>
+  </div>
+	<div class="flex items-center justify-between mt-4">
+
+	</div>
+	<div>
+	  <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
+	  </div>
+	</div>
