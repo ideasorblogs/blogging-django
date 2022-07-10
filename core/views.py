@@ -42,14 +42,18 @@ class indexview(View):
         return render(request, 'index/index.html')
 
 
-class ProfileView(LoginRequiredMixin, View):
+class ProfileView(LoginRequiredMixin, UpdateView):
+    model = User
+    template_name = 'user/profile.html'
     @minified_response
     def get(self, request,*args, **kwargs):
-        details = User.objects.all()
+        details = User.objects.filter(id=request.user.id)
         context = {
             'details': details
         }
         return render(request, 'user/profile.html', context)
+
+
 
 class addquestion(LoginRequiredMixin,CreateView):
     model = question
@@ -58,13 +62,58 @@ class addquestion(LoginRequiredMixin,CreateView):
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
 
-
-
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
 
+def bookmarks(request):
+    return HttpResponse('')
+
+
+class my_questions(ListView):
+    model = question
+    template_name = 'user/profile.html'
+    slug = 'slug'
+
+class my_answers(ListView):
+    model = question
+    template_name = 'user/profile.html'
+    slug = 'slug'
+
+class my_friends(ListView):
+    model = User
+    template_name = 'user/profile.html'
+    slug = 'slug'
+
+
+class my_blogs(ListView):
+    model = question
+    template_name = 'user/profile.html'
+    slug = 'slug'
+
+
+class my_bookmarks(ListView):
+    model = question
+    template_name = 'user/profile.html'
+    slug = 'slug'
+
+
+class my_downloads(ListView):
+    model = question
+    template_name = 'user/profile.html'
+    slug = 'slug'
+
+
+class email_settings(ListView):
+    model = question
+    template_name = 'user/profile.html'
+    slug = 'slug'
+
+class account_settings(ListView):
+    model = question
+    template_name = 'user/profile.html'
+    slug = 'slug'
 
 
 

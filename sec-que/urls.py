@@ -27,6 +27,8 @@ urlpatterns = [
     path('events/', include('events.urls')),
     path('questions/', include('questions.urls')),
     path('blogs/', include('blog.urls')),
+    path('projects/', include('projects.urls')),
+    path('messages/', include('messages.urls')),
 ]
 
 if settings.DEBUG:

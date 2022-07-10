@@ -42,21 +42,26 @@
       <li>
         <a href="{% url 'trainings' %}" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-black md:dark:hover:bg-transparent dark:border-gray-700">Trainings</a>
       </li>
+		<li>
+        <a href="{% url 'projects' %}" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-black md:dark:hover:bg-transparent dark:border-gray-700">Projects</a>
+      </li>
       <li>
         <a href="{% url 'events' %}" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-black md:dark:hover:bg-transparent dark:border-gray-700">Events</a>
       </li>
     </ul>
-	  {% if request.path == '/create-a-resume/' %}
-	  <button onclick="window.location.href='#'" type="button" class="hidden text-white bg-yellow-500 hover:bg-blue-800 focus:ring-4 ml-6 focus:outline-none focus:bg-yellow-500 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-yellow-500 dark:hover:bg-blue-700 "></button>
-		  {% else %}
-	  		<button onclick="window.location.href='{% url 'add_question' %}'" type="button" class="text-white bg-yellow-500 hover:bg-blue-800 focus:ring-4 ml-6 focus:outline-none focus:bg-yellow-500 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-yellow-500 dark:hover:bg-blue-700 ">
+	  {% if 'blogs' in request.path  %}
+	  		<button onclick="window.location.href='{% url 'add_blog' %}'" type="button" class="text-white bg-yellow-500 hover:bg-blue-800 focus:ring-4 ml-6 focus:outline-none focus:bg-yellow-500 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-yellow-500 dark:hover:bg-blue-700 ">
+		Post your Blogs<i class="fa-solid fa-pen ml-2"></i></button>
+	  {% else %}
+	  <button onclick="window.location.href='{% url 'add_question' %}'" type="button" class="text-white bg-yellow-500 hover:bg-blue-800 focus:ring-4 ml-6 focus:outline-none focus:bg-yellow-500 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-yellow-500 dark:hover:bg-blue-700 ">
 		Post your Questions<i class="fa-solid fa-pen ml-2"></i></button>
-		  {% endif %}
+	  {% endif %}
 	  </div>
 	  {% if user.is_authenticated %}
 	  <div class="hidden lg:inline-block flex md:order-2">
-		  <i class="fa-regular fa-bookmark mr-10 fa-lg cursor-pointer "></i>
-		  <i class="fa-regular fa-message mr-10 fa-lg cursor-pointer"></i>
+		  <a href="{% url 'bookmarks' %}"><i class="fa-regular fa-bookmark mr-10 fa-lg cursor-pointer "></i></a>
+		  <a href="{% url 'message' %}"><i class="fa-regular fa-message mr-10 fa-lg cursor-pointer"></i></a>
+
 		  <button onclick="window.location.href='{% url 'profile' request.user %}'" type="button" class="text-white bg-yellow-500 hover:bg-blue-800 focus:ring-4  focus:outline-none focus:bg-yellow-500 font-medium rounded-lg text-sm px-4 py-2  text-center mr-3 md:mr-0 dark:bg-yellow-500 dark:hover:bg-blue-700 ">
 			  {{request.user.username.0|upper}}</button>
 	  </div>
@@ -101,6 +106,9 @@
 					</li>
 					<li class="mb-1">
 						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{% url 'events' %}">Events</a>
+					</li>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{% url 'projects' %}">Projects</a>
 					</li>
 					<li class="mb-1">
 						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{% url 'profile' request.user %}">My profile</a>
