@@ -26,4 +26,3 @@ class NewsletterForm(forms.ModelForm):
     class Meta:
         model = newsletter
         fields = ['name', 'email']
-

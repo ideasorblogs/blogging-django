@@ -1,0 +1,59 @@
+{% extends 'profile_manager/profile_sidebar.html' %}
+{% block content %}
+<div class="mt-10 sm:mt-0 ">
+  <div class="md:grid md:grid-cols-3 md:gap-6 ">
+    <div class="mt-5 md:mt-0 md:col-span-3">
+      <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+        <div class="shadow bg-gray-100 overflow-hidden sm:rounded-md">
+          <div class="px-4 py-5 rounded-xl bg-gray-100 sm:p-6">
+            <div class="grid ">
+      <div class="text-gray-800 flex flex-row gap-5 items-center mb-6">
+              <div class="">
+        <img class="w-20 h-20 object-cover rounded-xl
+                   border-2 border-pink-600 p-1" src="https://images.unsplash.com/photo-1502791451862-7bd8c1df43a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80" alt="profile">
+      </div>
+        <div class="text-2xl">
+          {{request.user.username|capfirst}}
+        </div>
+        <button onclick="window.location.href='#'" type="reset" class="px-2 py-2 bg-yellow-500 text-white text-xs font-medium rounded-md">
+          Edit profile
+        </button>
+        <span class="px-2 py-2 bg-gray-200 hover:bg-gray-200 text-gray-800 text-xs font-medium rounded-md cursor-pointer">
+                  <a href="#"><i class="fa-solid fa-gear cursor-pointer"></i></a>
+        </span>
+      </div>
+                <div class="text-gray-800 flex flex-col">
+                  <div class="font-bold mb-4">
+                  <h3 class="text-lg mb-2 font-medium leading-6 text-gray-900"><i class="fa-regular fa-user mr-1 mb-2"></i> {{request.user.get_full_name}}</h3>
+                  <p class="mt-1 mb-2 text-sm text-gray-600"><i class="fa-solid fa-calendar mr-2"></i> Member since {{request.user.date_joined.date}}</p>
+                  </div>
+                </div>
+              <div class="mb-5">
+                    ??Korean actress and model's International fanpage ? I've always support you<br> thankyou for loving our Bae Suzy
+                </div><hr class="mb-4">
+              <div class="text-gray-800 flex flex-row gap-5 md:gap-4 items-center mb-6">
+                <div>
+                  <span class="text-sm font-semibold">92.4k </span> Friends
+                </div>
+                <div>
+                  <span class="text-sm font-semibold">92.4k </span> Questions
+                </div>
+                <div>
+                  <span class="text-sm font-semibold">92.4k </span> Answers
+                </div>
+                <div>
+                  <span class="text-sm font-semibold">92.4k </span> Blogs
+                </div>
+                <div>
+                  <span class="text-sm font-semibold">92.4k </span> Projects
+                </div>
+              </div>
+          </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

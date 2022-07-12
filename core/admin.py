@@ -7,3 +7,5 @@ class Newsletter(admin.ModelAdmin):
     list_display = ['name', 'email','subscribed_on']
 
 admin.site.register(newsletter, Newsletter)
+
+

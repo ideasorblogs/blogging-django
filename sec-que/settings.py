@@ -305,7 +305,7 @@ SOCIALACCOUNT_PROVIDERS = {
     },
     'github': {
             'SCOPE': [
-                'user',
+                'profile_manager',
             ],
     }
 }
