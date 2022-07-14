@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'compressor',
     'questions',
     'blog',
+    'projects',
     'hitcount',
     'ckeditor',
     'django_db_logger',
@@ -204,7 +205,8 @@ ACCOUNT_PASSWORD_MIN_LENGTH = 6
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 SOCIALACCOUNT_AUTO_SIGNUP = True
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 

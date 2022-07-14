@@ -11,12 +11,12 @@
         {% for q in object_list %}
     <div class="max-w-2xl px-8 py-3 mx-auto bg-white rounded-lg">
         <div class="flex items-center justify-between">
-            <span class="text-xs font-light text-gray-600 dark:text-gray-400">Posted on {{q.created_on}} {{q.time}}</span>
+            <span class="text-xs font-light text-gray-600 dark:text-gray-400" >Posted on {{q.created_on}} {{q.time}}</span>
 
         </div>
 
         <div class="mt-2">
-            <a href="{% url 'quesdetail' q.slug %}" class="text-xl font-bold text-black hover:text-indigo-600 hover:underline">{{q.title}} ?</a>
+            <a href="{% url 'quesdetail' q.slug %}" class="text-xl text-black hover:text-indigo-600 hover:underline" style="font-family: 'Lato', sans-serif;">{{q.title}} ?</a>
             <p class="mt-2 text-sm text-gray-800">{{q.questions|striptags|truncatewords:"30"}}</p>
         </div>
         {% for tag in q.tags.all|slice:"4" %}
@@ -27,7 +27,7 @@
 
         <div class="flex items-center justify-between mt-4">
             <div class="flex items-center">
-                <p class="text-gray-500 text-xs">Asked by <a href="" class="cursor-pointer">{{q.author}}</a></p>
+                <p class="text-gray-500 text-xs">Asked by <a href="#" class="cursor-pointer">{{q.author}}</a></p>
                 <p class="text-gray-500 text-xs ml-3 mr-4"><i class="fa-solid fa-eye ml-2 mr-1"></i>{% get_hit_count for q %}</p>
                 <p class="text-gray-500 text-xs ml-3 mr-4"><i class="fa-solid fa-reply"></i>1200</p>
                 <p class="text-gray-500 text-xs ml-3 mr-4"><i class="fa-solid fa-thumbs-up"></i>1200</p>

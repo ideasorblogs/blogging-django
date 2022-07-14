@@ -62,7 +62,7 @@
 		  <a href="#"><i class="fa-regular fa-bookmark mr-10 fa-lg cursor-pointer "></i></a>
 		  <a href="{% url 'message' %}"><i class="fa-regular fa-message mr-10 fa-lg cursor-pointer"></i></a>
 
-		  <button onclick="window.location.href='{% url 'profile' request.user %}'" type="button" class="text-white bg-yellow-500 hover:bg-blue-800 focus:ring-4  focus:outline-none focus:bg-yellow-500 font-medium rounded-lg text-sm px-4 py-2  text-center mr-3 md:mr-0 dark:bg-yellow-500 dark:hover:bg-blue-700 ">
+		  <button onclick="window.location.href='{% url 'profile' request.user.username %}'" type="button" class="text-white bg-yellow-500 hover:bg-blue-800 focus:ring-4  focus:outline-none focus:bg-yellow-500 font-medium rounded-lg text-sm px-4 py-2  text-center mr-3 md:mr-0 dark:bg-yellow-500 dark:hover:bg-blue-700 ">
 			  {{request.user.username.0|upper}}</button>
 	  </div>
 		{% else %}

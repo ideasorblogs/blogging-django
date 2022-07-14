@@ -14,14 +14,14 @@
                             </div>
                             <ul class="mt-12">
                                 <li class="flex w-full justify-between text-gray-300 cursor-pointer items-center mb-6">
-                                    <a href="#" class="flex items-center">
+                                    <a href="{% url 'profile' request.user.username %}" class="flex items-center">
                                         <i class="fa-regular fa-user mr-1"></i>
                                         <span class="text-sm ml-2">Profile</span>
                                     </a>
                                     <div class="py-1 px-3 bg-gray-600 rounded text-gray-300 flex items-center justify-center text-xs">5</div>
                                 </li>
                                 <li class="flex w-full justify-between text-gray-400 hover:text-gray-300 cursor-pointer items-center mb-6">
-                                    <a href="#" class="flex items-center ">
+                                    <a href="{% url 'my_questions' request.user %}" class="flex items-center ">
                                         <i class="fa-regular fa-circle-question"></i>
                                         <span class="text-sm ml-2">Questions</span>
                                     </a>

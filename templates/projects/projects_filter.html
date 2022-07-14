@@ -1,0 +1,17 @@
+  <div class="relative">
+	<div class="absolute flex items-center ml-2 h-full">
+
+	</div>
+      <form method="get" enctype="multipart/form-data" action="{% url 'search' %}">
+          {% csrf_token %}
+	<input type="search" name="q" required placeholder="Search by Question, Category, posted time..." class="px-8 py-3 w-full rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+  </div>
+	<div class="flex items-center justify-between mt-4">
+        <button type="submit" class="px-2 py-2 bg-gray-200 hover:bg-gray-200 text-gray-800 text-xs font-medium rounded-md">
+		Search
+	  </button></form>
+	</div>
+	<div>
+	  <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
+	  </div>
+	</div>
