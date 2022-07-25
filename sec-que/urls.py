@@ -29,7 +29,7 @@ urlpatterns = [
     path('blogs/', include('blog.urls')),
     path('projects/', include('projects.urls')),
     path('messages/', include('messages.urls')),
-    path('profile/', include('profile_manager.urls'))
+    path('profile/', include('profile_manager.urls')),
 ]
 
 if settings.DEBUG:

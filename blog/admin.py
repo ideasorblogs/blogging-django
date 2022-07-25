@@ -3,7 +3,8 @@ from .models import *
 # Register your models here.
 
 class Blogadmin(admin.ModelAdmin):
-    list_display = ['title', 'author', 'created_on']
+    list_display = ['title', 'author', 'created_on', 'is_active']
+    list_editable = ['is_active']
     prepopulated_fields = {'slug':['title']}
 
 class categorieadmin(admin.ModelAdmin):

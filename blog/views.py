@@ -7,19 +7,28 @@ from htmlmin.decorators import minified_response
 from .forms import *
 from .models import *
 
-@minified_response
-def blogs(request):
-    dis = blog.objects.all().order_by('-time')
-    context = {
-        'display':dis
-    }
-    return render(request, 'blogs/blogs.html', context)
+class listview(ListView):
+    model = blog
+    template_name = "blogs/blogs.html"
+    ordering = '-time'
+    context_object_name = 'blogs'
+
 
 class details(DetailView):
     model = blog
     template_name = "blogs/blog_detail.html"
     slug_url_kwarg = 'slug'
     slug_field = 'slug'
+    context_object_name = 'blogdetails'
+
+class Tags(ListView):
+    model = blog
+    template_name = 'blogs/blogs.html'
+    context_object_name = 'tags'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return blog.objects.filter(tags__slug=self.kwargs.get('slug'))
 
 
 class addblog(LoginRequiredMixin,CreateView):

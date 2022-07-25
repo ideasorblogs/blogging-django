@@ -1,0 +1,82 @@
+{% include 'index/includes/navbar.html' %}
+<div class="w-full h-full ">
+                <div class="flex flex-no-wrap ">
+                    <div class="w-64 absolute sm:relative flex-col justify-between hidden sm:flex border">
+                        <div class="px-8 fixed">
+                            <div class="h-16 w-full flex items-center">
+                            </div>
+                            <ul class="mt-12">
+                                <div class="cursor-pointer">
+                                <li class="flex w-full justify-between items-center ml-10 mb-[80px]">
+                                    <div class="group">
+                                        <i class="fa-solid fa-house fa-xl"></i>
+                                        <span class="tooltip-text bg-gray-200 px-5 py-2 -mt-4 ml-[40px] text-xs rounded hidden group-hover:block absolute &quot;">Home</span></p>
+                                    </div>
+                                </li>
+                                </div>
+                                <li class="flex w-full justify-between items-center ml-10 mb-[80px]">
+                                    <div class="group">
+                                        <span class="tooltip-text bg-gray-200 px-5 py-2 -mt-4 ml-[40px] text-xs rounded hidden group-hover:block absolute text-center&quot;">118k</span></p>
+                                        <i class="fa-solid fa-heart-circle-check fa-xl cursor-pointer"></i>
+                                    </div>
+                                </li>
+                                <li class="flex w-full justify-between  items-center ml-10 mb-[80px]">
+                                    <div class="group">
+                                        <span class="tooltip-text bg-gray-200 px-5 py-2 -mt-4 ml-[40px] text-xs rounded hidden group-hover:block absolute text-center&quot;">118k</span></p>
+                                        <i class="fa-regular fa-bookmark fa-xl cursor-pointer"></i>
+                                    </div>
+                                </li>
+                                <li class="flex w-full justify-between  items-center ml-10 mb-[80px]">
+                                    <div class="group">
+                                        <span class="tooltip-text bg-gray-200 px-5 py-2 -mt-4 ml-[40px] text-xs rounded hidden group-hover:block absolute text-center&quot;">Share</span></p>
+                                        <i class="fa-solid fa-arrow-up-from-bracket fa-xl cursor-pointer"></i>
+                                    </div>
+                                </li>
+                                <li class="flex w-full justify-between  items-center ml-10 mb-[80px]">
+                                    <div class="group">
+                                        <span class="tooltip-text bg-gray-200 px-5 py-2 -mt-4 ml-[40px] text-xs rounded hidden group-hover:block absolute text-center&quot;">Report</span></p>
+                                        <i class="fa-solid fa-flag fa-xl cursor-pointer"></i>
+                                    </div>
+                                </li>
+                                <li class="flex w-full justify-between  items-center ml-10 mb-[80px]">
+                                    <div class="group">
+                                        <span class="tooltip-text bg-gray-200 px-5 py-2 -mt-4 ml-[40px] text-xs rounded hidden group-hover:block fixed &quot;">Contribute</span></p>
+                                        <i class="fa-solid fa-pen fa-xl cursor-pointer"></i>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="px-8 border-t border-gray-700">
+                            <ul class="w-full flex items-center justify-between bg-gray-800">
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Remove class [ h-64 ] when adding a card block -->
+                    <div class="container mx-auto px-6 bg-gray-100">
+                        <!-- Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border -->
+                        <div class="w-full h-full rounded ">
+                            {% block content %}
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    var sideBar = document.getElementById("mobile-nav");
+                    var openSidebar = document.getElementById("openSideBar");
+                    var closeSidebar = document.getElementById("closeSideBar");
+                    sideBar.style.transform = "translateX(-260px)";
+
+                    function sidebarHandler(flag) {
+                        if (flag) {
+                            sideBar.style.transform = "translateX(0px)";
+                            openSidebar.classList.add("hidden");
+                            closeSidebar.classList.remove("hidden");
+                        } else {
+                            sideBar.style.transform = "translateX(-260px)";
+                            closeSidebar.classList.add("hidden");
+                            openSidebar.classList.remove("hidden");
+                        }
+                    }
+                </script>
+ </div>

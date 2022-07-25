@@ -1,15 +1,13 @@
 {% extends 'profile_manager/profile_sidebar.html' %}
 {% load hitcount_tags %}
 {% block content %}
-<div class="mt-10 sm:mt-0 ">
+<div class="mt-5 md:mt-5  sm:mt-0 ">
   <div class="md:grid md:grid-cols-3 md:gap-6 ">
     <div class="mt-5 md:mt-0 md:col-span-3">
       <form method="POST" enctype="multipart/form-data">
           {% csrf_token %}
-        <div class="shadow-md bg-gray-100 overflow-hidden sm:rounded-md">
-          <div class="px-4 py-5 rounded-xl h-auto md:h-auto bg-gray-100 sm:p-6">
-            <div class="grid p-2">
-    <div class=" px-8 py-3 w-full  bg-white rounded-lg">
+            <div class="grid w-full md:w-full">
+    <div class=" px-8 py-4 w-full  bg-white rounded-lg">
         {% for q in que %}
         <div class="flex items-center justify-between">
             <span class="text-xs font-light text-gray-600 dark:text-gray-400">Posted on {{q.created_on}} {{q.time}} </span>
@@ -29,8 +27,6 @@
     </div>
 
           </div>
-          </div>
-        </div>
       </form>
     </div>
   </div>

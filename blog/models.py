@@ -10,6 +10,8 @@ from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 from hitcount.models import HitCount
+from taggit.managers import TaggableManager
+import readtime
 
 
 class category(models.Model):
@@ -29,12 +31,16 @@ class category(models.Model):
 class blog(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=200, unique=True)
-    image = models.ImageField(upload_to='thumbnail')
+    image = models.ImageField(upload_to='thumbnail', blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateField(auto_now_add=True)
     time = models.DateTimeField(auto_now=True)
     article = RichTextField()
     categorie = models.ForeignKey(category, on_delete=models.CASCADE, null=True, blank=True)
+    tags = TaggableManager(blank=True)
+    is_active = models.BooleanField(default=False)
+
+
     hit_count_generic = GenericRelation(
         HitCount, object_id_field='object_pk',
         related_query_name='hit_count_generic_relation'
@@ -69,6 +75,17 @@ class blog(models.Model):
 
     def get_absolute_url(self):
         return reverse('details', args=[self.slug])
+
+    @property
+    def get_photo_url(self):
+        if self.image and hasattr(self.image, 'url'):
+            return self.image.url
+        else:
+            return "/static/banner.png"
+
+    def get_readtime(self):
+        result = readtime.of_text(self.article)
+        return result.text
 
 
 
