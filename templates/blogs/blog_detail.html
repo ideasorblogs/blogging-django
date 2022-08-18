@@ -1,4 +1,5 @@
 {% extends 'blogs/blogs_sidebar.html' %}
+{% load social_share %}
 <!-- component -->
 <!-- This is an example component -->
 {% block content %}
@@ -29,16 +30,22 @@
 <!--                    </div>-->
 <!--                </div>-->
                 <div class="flex items-end justify-end md:justify-end text-2xl no-underline -mt-9 mb-6 mr-2">
-                    <i class="fa-brands fa-twitter cursor-pointer hover:text-gray-500 text-[20px] mr-4 ml-4"></i>
-                    <i class="fa-brands fa-facebook cursor-pointer hover:text-gray-500 text-[20px] mr-4 ml-2"></i>
-                    <i class="fa-brands fa-whatsapp cursor-pointer  hover:text-gray-500 text-[20px] mr-4 ml-2"></i>
-                    <i class="fa-solid fa-link cursor-pointer hover:text-gray-500 text-[20px] mr-4 ml-2"></i>
+                    {% post_to_twitter "Check out the new post from {{object.author}}: {{object.title}}." object_or_url "" %}
+                    {% post_to_facebook "Check out the new post from {{object.author}}: {{object.title}}." object_or_url "" %}
+                    {% post_to_whatsapp object_or_url %}
+                    {% send_email object.title "Check out the new post from {{object.author}}: {{object.title}}." object_or_url "" %}
                 </div>
             </div>
             <article class="flex flex-col w-full">
-                    <img src="{{object.image.url}}" class="w-full h-[350px] md:h-[500px]">
+                {% if object.image %}
+                    <img src="{{object.image.url}}" class="w-full h-[350px] md:h-[500px] p-2 bg-white">
+                {% else %}
+                <img src="{{ object.get_photo_url }}" class="w-full h-[350px] md:h-[500px] p-2 bg-white">
+                {% endif %}
                 <div class="bg-white flex flex-col justify-start p-6">
-                    <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">{{object.title}}</a>
+                    {% autoescape on %}
+                    <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">{{object.title|capfirst|linebreaksbr|force_escape|striptags}}</a>
+                    {% endautoescape %}
                     <p href="#" class="text-sm pb-8">
                         By <a href="#" class="font-semibold hover:text-gray-800">{{object.author}}</a>, Published on
                         {{object.created_on}}
@@ -60,7 +67,7 @@
                         </div>
                         {% endfor %}
                     </div>
-                    <p class="pb-3">{{object.article|safe}}</p>
+                    <p class="pb-3">{{object.article|linebreaks|striptags|capfirst}}</p>
                 </div>
             </article>
 
@@ -181,5 +188,5 @@
 
     </div>
 </body>
-</html>
+
 {% endblock %}

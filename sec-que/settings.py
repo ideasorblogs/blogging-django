@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.github',
+    'django_editorjs',
     'core',
     'crispy_forms',
     'tailwind',
@@ -60,6 +61,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'django_db_logger',
     'django_extensions',
+    'django_social_share',
 ]
 
 

@@ -30,8 +30,8 @@ class category(models.Model):
 
 class blog(models.Model):
     title = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=200, unique=True)
-    image = models.ImageField(upload_to='thumbnail', blank=True, null=True)
+    slug = models.SlugField(max_length=100, unique=True)
+    image = models.ImageField(upload_to='blogs/thumbnail/%Y/%m/%d', blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateField(auto_now_add=True)
     time = models.DateTimeField(auto_now=True)
@@ -39,7 +39,6 @@ class blog(models.Model):
     categorie = models.ForeignKey(category, on_delete=models.CASCADE, null=True, blank=True)
     tags = TaggableManager(blank=True)
     is_active = models.BooleanField(default=False)
-
 
     hit_count_generic = GenericRelation(
         HitCount, object_id_field='object_pk',

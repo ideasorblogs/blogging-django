@@ -1,8 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
+from django.http import JsonResponse, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
+from django.template.loader import render_to_string
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from hitcount.views import HitCountDetailView
 from htmlmin.decorators import minified_response
 from .forms import *
 from .models import *
@@ -14,12 +17,15 @@ class listview(ListView):
     context_object_name = 'blogs'
 
 
-class details(DetailView):
+class details(HitCountDetailView):
     model = blog
     template_name = "blogs/blog_detail.html"
     slug_url_kwarg = 'slug'
     slug_field = 'slug'
     context_object_name = 'blogdetails'
+    count_hit = True
+
+
 
 class Tags(ListView):
     model = blog

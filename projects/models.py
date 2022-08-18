@@ -21,7 +21,7 @@ class projects(models.Model):
     details = RichTextField(blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     thumbnail = models.ImageField(upload_to='projects/images')
-    uploaded_file = models.FileField('documents/%Y/%m/%d', validators=[validate_file_extension])
+    uploaded_file = models.FileField(upload_to='projects/uploads/%Y/%m/%d', validators=[validate_file_extension])
     created_on = models.DateTimeField(auto_now_add=True)
     time = models.TimeField(auto_now_add=True)
     tags = TaggableManager(blank=True)

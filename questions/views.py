@@ -24,7 +24,7 @@ class QuestionListview(ListView):
 
 
 def count(request):
-    count = question.objects.count()
+    count = question.objects.all().count()
     context = {
         'count':count
     }
